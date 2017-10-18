@@ -58,7 +58,7 @@ helpMessage =""" ZeusBot  􀔃􀄆red check mark􏿿
 [Close Url] Menutup Url Group
 
 􀔃􀅕red arrow right􏿿 Command Private
-[Add @] Add Admin
+[Add @ ]  Menambah Admin
 [SetGroup] Menggatur Privasi Grup
 [Ban @] Bann Target
 [Unban @]  Unbann Target
@@ -1787,29 +1787,30 @@ def bot(op):
                                 cl.sendText(msg.to,"Clear")
                             except:
                                 ki.sendText(msg.to,"Error")
-           #----------------Fungsi Unbanned User Target Finish-----------------------#
-		#-------------------Fungsi Add Admin Start----------#
-			elif "Add @" in msg.text:
-				if msg.from_ in admin:
-					if msg.toType == 2:
-						print "[Add] Sukses"
-						_name = msg.text.replace("Add @","")
-						_nameadmin = _name.rstrip('   ')
-						gs = cl.getGroup(msg.to)
-						gs = ki.getGroup(msg.to)
-						gs = kk.getGroup(msg.to)
-						gs = kc.getGroup(msg.to)
-						targets = []
-						for adm in gs.members:
-							if _nametarget = adm.displayName:
-								admin.append(adm.mid)
-						else:
-                        for adm in admin:
-                            try:
-								cl.sendText(msg.to,"Sudah menjadi admin")
-							except
-								cl.sendText(msg.to,"Error")
-		#------------------Fungsi Add Admin Finish----------#
+            #----------------Fungsi Unbanned User Target Finish-----------------------#
+		   
+			#----------------Fungsi Add Admin Start----------#
+			 elif msg.text in ["Add "]:
+              if msg.from_ in admin:
+                if msg.toType == 2:
+                    group = ki.getGroup(msg.to)
+                    gMembMids = [contact.mid for contact in group.members]
+                    matched_list = []
+					for tag in admin:
+						matched_list+=filter(lambda str: str == tag, gMembMids)
+					if matched_list == []:
+						cl.sendText("Sudah Admin")
+						return
+					for kk in matched_list:
+						try:
+							addlist=[ki,kk,kc,cl]
+							addadmin=random.choice(addlist)
+							addadmin.admin.append(tag)
+						except
+							cl.sendText("Error")
+							pass
+			#----------------Fungsi Add Admin Finish----------#
+		
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
                 cl.sendText(msg.to,"P 􀔃􀆶squared up!􏿿")
