@@ -6,19 +6,19 @@ from datetime import datetime
 import time,random,sys,json,codecs,threading,glob,re
 
 cl = LINETCR.LINE()
-cl.login(qr=True)
+cl.login(token="ElO3P2AUNrrJ5Y6SWbe0.PcTMvGDcqa6HNdGQZ1jKqa.tSMN/mlq/eUTJS7iJ9ckz66XBKqi5Yjx4Y1Fgi6vm0c=")
 cl.loginResult()
 
 ki = LINETCR.LINE()
-ki.login(qr=True)
+ki.login(token="EluSMY9uqAjb0P3OLki4.99hQFBlqHslM6IVViG1/Ta.GaMyxSLQ4ojvl7oPpi5SOEoZRfLlCjxSKpN+PFvwOQA=")
 ki.loginResult()
 
 kk = LINETCR.LINE()
-kk.login(qr=True)
+kk.login(token="El0jV3FOybJ3BiFvXbH0.H4wFP5G3dGEHNcp3Za+UCa.Ux26SaJENSMjG2ryRpPusqm8Dm57abnKkUnlr6ctsGI=")
 kk.loginResult()
 
 kc = LINETCR.LINE()
-kc.login(qr=True)
+kc.login(token="El3PoZmexrSseiZYq0Fe.DgaHMHatIQ6zEhWSWGzulG.tlAfe99RhTGOjyU5CrC97ge3ZQ4e+y4xEo7cDLX70wc=")
 kc.loginResult()
 
 #cl = LINETCR.LINE()
@@ -58,7 +58,6 @@ helpMessage =""" ZeusBot  􀔃􀄆red check mark􏿿
 [Close Url] Menutup Url Group
 
 􀔃􀅕red arrow right􏿿 Command Private
-[Add @ ]  Menambah Admin
 [SetGroup] Menggatur Privasi Grup
 [Ban @] Bann Target
 [Unban @]  Unbann Target
@@ -84,8 +83,8 @@ Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 
-Bots=[mid,Amid,Bmid,Cmid,"u880ee16541e4a34cd0f0dfc6a7e64833","u2b457b1ef8391ee451c9a22c835e1e33"]
-admin=["ADMIN_MIDS"]
+Bots=[ua42b66560742400ea19c382acf526440,uf7d1ea7db2d08522e6ea2bef220d7eb4,u87859fa798370e07a19c23f7cc0fee70,u7460219a10138aae99787c2cc206542e]
+admin=["u880ee16541e4a34cd0f0dfc6a7e64833","u2b457b1ef8391ee451c9a22c835e1e33"]
 wait = {
     'contact':True,
     'autoJoin':True,
@@ -1787,7 +1786,8 @@ def bot(op):
                                 cl.sendText(msg.to,"Clear")
                             except:
                                 ki.sendText(msg.to,"Error")
-            #----------------Fungsi Unbanned User Target Finish-----------------------#
+           #----------------Fungsi Unbanned User Target Finish-----------------------#
+           
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
                 cl.sendText(msg.to,"P 􀔃􀆶squared up!􏿿")
