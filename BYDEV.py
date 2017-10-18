@@ -1788,29 +1788,6 @@ def bot(op):
                             except:
                                 ki.sendText(msg.to,"Error")
             #----------------Fungsi Unbanned User Target Finish-----------------------#
-		   
-			#----------------Fungsi Add Admin Start----------#
-			 elif msg.text in ["Add "]:
-              if msg.from_ in admin:
-                if msg.toType == 2:
-                    group = ki.getGroup(msg.to)
-                    gMembMids = [contact.mid for contact in group.members]
-                    matched_list = []
-					for tag in admin:
-						matched_list+=filter(lambda str: str == tag, gMembMids)
-					if matched_list == []:
-						cl.sendText("Sudah Admin")
-						return
-					for kk in matched_list:
-						try:
-							addlist=[ki,kk,kc,cl]
-							addadmin=random.choice(addlist)
-							addadmin.admin.append(tag)
-						except
-							cl.sendText("Error")
-							pass
-			#----------------Fungsi Add Admin Finish----------#
-		
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
                 cl.sendText(msg.to,"P 􀔃􀆶squared up!􏿿")
