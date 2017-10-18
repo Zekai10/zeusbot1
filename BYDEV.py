@@ -83,7 +83,7 @@ Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 
-Bots=[ua42b66560742400ea19c382acf526440,uf7d1ea7db2d08522e6ea2bef220d7eb4,u87859fa798370e07a19c23f7cc0fee70,u7460219a10138aae99787c2cc206542e]
+Bots=[mid,Amid,Bmid,Cmid]
 admin=["u880ee16541e4a34cd0f0dfc6a7e64833","u2b457b1ef8391ee451c9a22c835e1e33"]
 wait = {
     'contact':True,
