@@ -537,7 +537,6 @@ def bot(op):
             elif msg.text is None:
                 return
             elif msg.text in ["Key","help","Help"]:
-              if msg.from_ in Bots:
                 if wait["lang"] == "JP":
                     cl.sendText(msg.to,helpMessage)
                 else:
@@ -1612,6 +1611,7 @@ def bot(op):
     
     #-------------Fungsi Tagall User Start---------------#
             elif msg.text in ["Tag All"]:
+				if msg.from_ in admin:
                  group = cl.getGroup(msg.to)
                  mem = [contact.mid for contact in group.members]
                  for mm in mem:
@@ -1681,7 +1681,7 @@ def bot(op):
             
         #----------------Fungsi Kick User Target Start----------------------#
             elif "Nk " in msg.text:
-                  if msg.from_ in admin:
+                if msg.from_ in admin:
                        nk0 = msg.text.replace("Nk ","")
                        nk1 = nk0.lstrip()
                        nk2 = nk1.replace("@","")
@@ -1707,24 +1707,25 @@ def bot(op):
                                     kc.sendText(msg.to,"Hehehe")
         #----------------Fungsi Kick User Target Finish----------------------#      
             elif "Blacklist @ " in msg.text:
-                _name = msg.text.replace("Blacklist @ ","")
-                _kicktarget = _name.rstrip(' ')
-                gs = ki2.getGroup(msg.to)
-                targets = []
-                for g in gs.members:
-                    if _kicktarget == g.displayName:
-                        targets.append(g.mid)
-                        if targets == []:
-                            cl.sendText(msg.to,"Not found")
-                        else:
-                            for target in targets:
-                                try:
-                                    wait["blacklist"][target] = True
-                                    f=codecs.open('st2__b.json','w','utf-8')
-                                    json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
-                                    k3.sendText(msg.to,"Succes Cv")
-                                except:
-                                    ki.sendText(msg.to,"error")
+				if msg.from_ in admin:
+					_name = msg.text.replace("Blacklist @ ","")
+					_kicktarget = _name.rstrip(' ')
+					gs = ki2.getGroup(msg.to)
+					targets = []
+					for g in gs.members:
+						if _kicktarget == g.displayName:
+							targets.append(g.mid)
+							if targets == []:
+								cl.sendText(msg.to,"Not found")
+							else:
+								for target in targets:
+									try:
+										wait["blacklist"][target] = True
+										f=codecs.open('st2__b.json','w','utf-8')
+										json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
+										k3.sendText(msg.to,"Succes Cv")
+									except:
+										ki.sendText(msg.to,"error")
             
             #----------------Fungsi Banned User Target Start-----------------------#
             elif "Banned @" in msg.text:
@@ -1837,42 +1838,50 @@ def bot(op):
 #-----------------------------------------------
 
             elif msg.text in ["Cv say Joshua"]:
-                ki.sendText(msg.to,"Joshua Ganteng 􀜁􀅔Har Har􏿿")
-                kk.sendText(msg.to,"Joshua Ganteng 􀜁􀅔Har Har􏿿")
-                kc.sendText(msg.to,"Joshua Ganteng 􀜁􀅔Har Har􏿿")
+				if msg.toType == 2:
+					ki.sendText(msg.to,"Joshua kentod 􀜁􀅔Har Har􏿿")
+					kk.sendText(msg.to,"Joshua kentod 􀜁􀅔Har Har􏿿")
+					kc.sendText(msg.to,"Joshua kentod 􀜁􀅔Har Har􏿿")
             elif msg.text in ["Cv say babi"]:
-                ki.sendText(msg.to,"Babi kelen 􀜁􀅔Har Har􏿿")
-                kk.sendText(msg.to,"Babi Kelen 􀜁􀅔Har Har􏿿")
-                kc.sendText(msg.to,"Babi kelen 􀜁􀅔Har Har􏿿")
+				if msg.toType == 2:
+					ki.sendText(msg.to,"joshua babi 􀜁􀅔Har Har􏿿")
+					kk.sendText(msg.to,"joshua babi 􀜁􀅔Har Har􏿿")
+					kc.sendText(msg.to,"joshua babi 􀜁􀅔Har Har􏿿")
             elif msg.text in ["Cv say bobo ah","Bobo dulu ah"]:
-                ki.sendText(msg.to,"Have a nice dream Cv 􀜁􀅔Har Har􏿿")
-                kk.sendText(msg.to,"Have a nice dream Cv 􀜁􀅔Har Har􏿿")
-                kc.sendText(msg.to,"Have a nice dream Cv 􀜁􀅔Har Har􏿿")
+				if msg.toType == 2:
+					ki.sendText(msg.to,"Have a nice dream Cv 􀜁􀅔Har Har􏿿")
+					kk.sendText(msg.to,"Have a nice dream Cv 􀜁􀅔Har Har􏿿")
+					kc.sendText(msg.to,"Have a nice dream Cv 􀜁􀅔Har Har􏿿")
             elif msg.text in ["Cv say quro"]:
-                ki.sendText(msg.to,"quro cantik banget 􀜁􀅔Har Har􏿿")
-                kk.sendText(msg.to,"quro cantik banget 􀜁􀅔Har Har􏿿")
-                kc.sendText(msg.to,"quro cantik banget 􀜁􀅔Har Har􏿿")
+				if msg.toType == 2:
+					ki.sendText(msg.to,"quro cantik banget 􀜁􀅔Har Har􏿿")
+					kk.sendText(msg.to,"quro cantik banget 􀜁􀅔Har Har􏿿")
+					kc.sendText(msg.to,"quro cantik banget 􀜁􀅔Har Har􏿿")
             elif msg.text in ["#welcome"]:
-                ki.sendText(msg.to,"Selamat datang di ena ena grupXD")
-                kk.sendText(msg.to,"Jangan nakal ok!")
+				if msg.toType == 2:
+					ki.sendText(msg.to,"Selamat datang di ena ena grupXD")
+					kk.sendText(msg.to,"Jangan nakal ok!")
 #-----------------------------------------------
             elif msg.text in ["PING","Ping","ping"]:
-                ki.sendText(msg.to,"PONG sepong 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
-                kk.sendText(msg.to,"PONG sepong 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
-                kc.sendText(msg.to,"PONG sepong 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
+				if msg.toType == 2:
+					ki.sendText(msg.to,"PONG sepong 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
+					kk.sendText(msg.to,"PONG sepong 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
+					kc.sendText(msg.to,"PONG sepong 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
 #-----------------------------------------------
 
        #-------------Fungsi Respon Start---------------------#
             elif msg.text in ["Respon","respon","Respon Dong","respon dong"]:
-                cl.sendText(msg.to,"Online, Ngakak onlen")
-                ki.sendText(msg.to,"Yg penting gk lemot")
-                kk.sendText(msg.to,"Sama dong....")
-                kc.sendText(msg.to,".............")
+				if msg.toType == 2:
+					cl.sendText(msg.to,"Online, Ngakak onlen")
+					ki.sendText(msg.to,"Yg penting gk lemot")
+					kk.sendText(msg.to,"Sama dong....")
+					kc.sendText(msg.to,".............")
       #-------------Fungsi Respon Finish---------------------#
 
       #-------------Fungsi Balesan Respon Start---------------------#
             elif msg.text in ["Ini Apa","ini apa","Apaan Ini","apaan ini"]:
-                ki.sendText(msg.to,"Ya gitu deh intinya mah 􀨁􀅴questioning􏿿")
+				if msg.toType == 2:
+					ki.sendText(msg.to,"Ya gitu deh intinya mah 􀨁􀅴questioning􏿿")
 
       #-------------Fungsi Balesan Respon Finish---------------------#
 
@@ -1892,33 +1901,36 @@ def bot(op):
 
       #-------------Fungsi Banned Send Contact Start------------------#
             elif msg.text in ["Ban"]:
-                wait["wblacklist"] = True
-                cl.sendText(msg.to,"send contact")
-                ki.sendText(msg.to,"send contact")
-                kk.sendText(msg.to,"send contact")
-                kc.sendText(msg.to,"send contact")
+				if msg.from_ in admin:
+					wait["wblacklist"] = True
+					cl.sendText(msg.to,"send contact")
+					ki.sendText(msg.to,"send contact")
+					kk.sendText(msg.to,"send contact")
+					kc.sendText(msg.to,"send contact")
             elif msg.text in ["Unban"]:
-                wait["dblacklist"] = True
-                cl.sendText(msg.to,"send contact")
-                ki.sendText(msg.to,"send contact")
-                kk.sendText(msg.to,"send contact")
-                kc.sendText(msg.to,"send contact")
+				if msg.from_ in admin:
+					wait["dblacklist"] = True
+					cl.sendText(msg.to,"send contact")
+					ki.sendText(msg.to,"send contact")
+					kk.sendText(msg.to,"send contact")
+					kc.sendText(msg.to,"send contact")
       #-------------Fungsi Banned Send Contact Finish------------------#
       
       #-------------Fungsi Bannlist Start------------------#          
             elif msg.text in ["Banlist"]:
-                if wait["blacklist"] == {}:
-                    cl.sendText(msg.to,"Tidak Ada Akun Terbanned")
-                else:
-                    ki.sendText(msg.to,"Blacklist user")
-                    mc = ""
-                    for mi_d in wait["blacklist"]:
-                        mc += "->" +cl.getContact(mi_d).displayName + "\n"
-                    cl.sendText(msg.to,mc)
+				if msg.from_ in admin:
+					if wait["blacklist"] == {}:
+						cl.sendText(msg.to,"Tidak Ada Akun Terbanned")
+					else:
+						ki.sendText(msg.to,"Blacklist user")
+						mc = ""
+						for mi_d in wait["blacklist"]:
+							mc += "->" +cl.getContact(mi_d).displayName + "\n"
+						cl.sendText(msg.to,mc)
       #-------------Fungsi Bannlist Finish------------------#  
       
             elif msg.text in ["Cek ban"]:
-                if msg.toType == 2:
+                if msg.from_ in admin:
                     group = cl.getGroup(msg.to)
                     gMembMids = [contact.mid for contact in group.members]
                     matched_list = []
@@ -1929,7 +1941,7 @@ def bot(op):
                         cocoa += mm + "\n"
                     cl.sendText(msg.to,cocoa + "")
             elif msg.text in ["Kill ban"]:
-                if msg.toType == 2:
+                if msg.from_ in admin:
                     group = cl.getGroup(msg.to)
                     gMembMids = [contact.mid for contact in group.members]
                     matched_list = []
@@ -1951,7 +1963,7 @@ def bot(op):
                     kk.sendText(msg.to,"Dasar anak jaman now")
                     kc.sendText(msg.to,"Dasar anak jaman now")
             elif msg.text in ["Clear"]:
-                if msg.toType == 2:
+                if msg.from_ in admin:
                     group = cl.getGroup(msg.to)
                     gMembMids = [contact.mid for contact in group.invitee]
                     for _mid in gMembMids:
